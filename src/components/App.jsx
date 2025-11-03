@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledNavbar } from "./Navbar";
+import { StyledNavbar } from "./NavBar";
 import { RouterProvider } from "react-router";
 import { router } from "../assets/router";
 
