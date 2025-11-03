@@ -1,10 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import * as React from "react";
-import { Homepage } from "../components/Homepage";
+import { HomePage } from "../components/HomePage";
 
-describe("Homepage component", () => {
-  it("Homepage renders", () => {
-    render(<Homepage />);
+describe("HomePage component", () => {
+  it("HomePage renders", () => {
+    render(<HomePage />);
+    screen.debug();
+    expect(screen.getByText("Home")).toBeInTheDocument();
   });
 });
