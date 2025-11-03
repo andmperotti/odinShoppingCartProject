@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
-function Homepage() {
-  return <div>hi</div>;
+function HomePage() {
+  return <div>Home</div>;
 }
 
-export { Homepage };
+const StyledHomePage = styled(HomePage)`
+  background: lightgreen;
+`;
+export { HomePage, StyledHomePage };
