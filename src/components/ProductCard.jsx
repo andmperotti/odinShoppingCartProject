@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 function ProductCard() {
-  return <div>Card</div>;
+  return <div>Product</div>;
 }
 
 const StyledProductCard = styled(ProductCard)`
