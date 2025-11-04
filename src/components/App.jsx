@@ -8,9 +8,16 @@ function App() {
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
+  //on app load/mount ping the fakestore api for products
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data) => setProducts([...data]));
+  }, []);
+
   return (
     <div>
-      <StyledNavbar />
+      <StyledNavbar itemCount={cartItems.length} />
       <RouterProvider router={router} />
     </div>
   );
