@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const Navbar = ({ className }) => <nav className={className}>Nav</nav>;
+const Navbar = ({ className, itemCount }) => (
+  <nav className={className}>Nav CartItems:{itemCount}</nav>
+);
 
 const StyledNavbar = styled(Navbar)`
   height: fit-content;
