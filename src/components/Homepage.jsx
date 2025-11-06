@@ -1,10 +1,22 @@
 import styled from "styled-components";
+import MysteryImage from "../assets/MysteryDeal.png";
 
 function HomePage({ className }) {
-  return <div className={className}>Home</div>;
+  return (
+    <div className={className}>
+      <h1>Random Store</h1>
+      <img src={MysteryImage} alt="mystery box" />
+    </div>
+  );
 }
 
 const StyledHomePage = styled(HomePage)`
-  background: lightgreen;
+  h1 {
+    text-align: center;
+  }
+  img {
+    margin: auto;
+    max-height: 900px;
+  }
 `;
 export { HomePage, StyledHomePage };
