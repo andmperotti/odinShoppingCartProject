@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router";
-import { StyledNavbar } from "./Navbar";
 import { useOutletContext } from "react-router";
 
 //non prop version other than styled-content className prop
