@@ -10,7 +10,10 @@ function Navbar({ className }) {
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
-      .then((data) => setProducts([...data]));
+      .then((data) => {
+        setProducts([...data]);
+        // setCartItems(data.map((product) => ({ id: product.id, quantity: 0 })));
+      });
   }, []);
 
   return (
@@ -32,7 +35,17 @@ function Navbar({ className }) {
 
         <Link to="/cart">
           <h2>Cart</h2>
-          {cartItems && <span className="cart-count">{cartItems.length}</span>}
+          {cartItems && (
+            <span className="cart-count">
+              {cartItems
+                .filter((item) => item.quantity > 0)
+                .reduce(
+                  (accumulator, current) =>
+                    accumulator + Number(current.quantity),
+                  0
+                )}
+            </span>
+          )}
           <svg className="feather cart-feather">
             <use href="node_modules/feather-icons/dist/feather-sprite.svg#shopping-cart" />
           </svg>
