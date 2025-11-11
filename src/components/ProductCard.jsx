@@ -13,11 +13,7 @@ function ProductCard({ className, product, cartItems, setCartItems }) {
       <div>
         <span>Quantity: </span>
         {/* quantity input field */}
-        <input
-          type="number"
-          className="order-quantity-input"
-          min="1"
-        ></input>
+        <input type="number" className="order-quantity-input" min="1"></input>
         {/* add to cart button */}
         <button
           type="button"
@@ -29,10 +25,14 @@ function ProductCard({ className, product, cartItems, setCartItems }) {
             if (
               newCartItems.filter((item) => item.id === product.id).length === 0
             ) {
-              newCartItems[product.id - 1] = { id: product.id, quantity: 0 };
+              newCartItems.push({ id: product.id, quantity: 0 });
+              newCartItems.sort((a, b) => a.id - b.id);
             }
             //add the user input value as quantity to the stored items quantity in the cart
-            newCartItems[product.id - 1].quantity += +inputElement.value;
+            let currentItemIndex = newCartItems.findIndex(
+              (item) => item.id === product.id
+            );
+            newCartItems[currentItemIndex].quantity += +inputElement.value;
             setCartItems(newCartItems);
           }}
         >
