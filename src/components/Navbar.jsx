@@ -12,7 +12,6 @@ function Navbar({ className }) {
       .then((response) => response.json())
       .then((data) => {
         setProducts([...data]);
-        // setCartItems(data.map((product) => ({ id: product.id, quantity: 0 })));
       });
   }, []);
 
@@ -60,6 +59,10 @@ const StyledNavbar = styled(Navbar)`
   background: gray;
   display: flex;
   justify-content: space-around;
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  right: 0px;
 
   //svg file
   .feather {
