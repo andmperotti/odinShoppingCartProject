@@ -22,11 +22,13 @@ function ShopPage({ className }) {
 }
 
 const StyledShopPage = styled(ShopPage)`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
   ul > * {
-    margin: 1ch 0;
-  }
-  h1 {
-    text-align: center;
+    margin: 1ch 5vw;
   }
 `;
 export { ShopPage, StyledShopPage };
