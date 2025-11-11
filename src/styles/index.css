@@ -74,3 +74,9 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+/* my own:*/
+ul,
+ol {
+  padding: 0;
+}
