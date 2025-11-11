@@ -9,7 +9,9 @@ function ProductCard({ className, product, cartItems, setCartItems }) {
         Rating: {product.rating.rate} ({product.rating.count} ratings)
       </span>
       <p>{product.description}</p>
-      <span className="product-price">{product.price.toFixed(2)}</span>
+      <span className="product-price">
+        Price each: ${product.price.toFixed(2)}
+      </span>
       <div>
         <span>Quantity: </span>
         {/* quantity input field */}
