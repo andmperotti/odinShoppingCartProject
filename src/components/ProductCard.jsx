@@ -14,23 +14,18 @@ function ProductCard({ className, product, cartItems, setCartItems }) {
       </span>
       <div>
         <span>Quantity: </span>
-        {/* quantity input field */}
         <input type="number" className="order-quantity-input" min="1"></input>
-        {/* add to cart button */}
         <button
           type="button"
           onClick={(e) => {
             let newCartItems = [...cartItems];
             let inputElement = e.target.parentNode.children[1];
-
-            //if there isn't an element in the cartItems for this product you're adding, then add an entry for it
             if (
               newCartItems.filter((item) => item.id === product.id).length === 0
             ) {
               newCartItems.push({ id: product.id, quantity: 0 });
               newCartItems.sort((a, b) => a.id - b.id);
             }
-            //add the user input value as quantity to the stored items quantity in the cart
             let currentItemIndex = newCartItems.findIndex(
               (item) => item.id === product.id
             );
