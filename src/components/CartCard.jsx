@@ -4,32 +4,25 @@ function CartCard({ className, cartItem, products, cartItems, setCartItems }) {
   return (
     <div className={className} key={cartItem.id}>
       <img src={products[cartItem.id - 1].image} alt="#"></img>
-      <div>
-        <h2>{products[cartItem.id - 1].title}</h2>
-      </div>
-      <div>
-        <div className="price-update">
-          <label>
-            Quantity:{" "}
-            <input
-              className="update-quantity"
-              type="number"
-              value={cartItem.quantity}
-              min="1"
-              onChange={(event) => {
-                let newCartItems = [...cartItems];
-                let currentItemIndex = newCartItems.findIndex(
-                  (item) => item.id === cartItem.id
-                );
-                newCartItems[currentItemIndex].quantity = event.target.value;
-                setCartItems(newCartItems);
-              }}
-            ></input>
-          </label>
-        </div>
-        <button type="button" className="delete-button">
-          Delete Item
-        </button>
+      <h2>{products[cartItem.id - 1].title}</h2>
+      <div className="details">
+        <label className="price-update">
+          Quantity:{" "}
+          <input
+            className="update-quantity"
+            type="number"
+            value={cartItem.quantity}
+            min="1"
+            onChange={(event) => {
+              let newCartItems = [...cartItems];
+              let currentItemIndex = newCartItems.findIndex(
+                (item) => item.id === cartItem.id
+              );
+              newCartItems[currentItemIndex].quantity = event.target.value;
+              setCartItems(newCartItems);
+            }}
+          ></input>
+        </label>
         <p>Price per: {products[cartItem.id - 1].price}</p>
         <p>
           <b>
@@ -37,33 +30,50 @@ function CartCard({ className, cartItem, products, cartItems, setCartItems }) {
             {(products[cartItem.id - 1].price * cartItem.quantity).toFixed(2)}
           </b>
         </p>
+        <button type="button" className="delete-button">
+          Delete
+        </button>
       </div>
     </div>
   );
 }
 
 const StyledCartCard = styled(CartCard)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin: 1vh 3vw;
   border: 1px solid black;
   padding: 1ch;
+  height: 25vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
 
   .delete-button {
     color: red;
+    width: fit-content;
+    text-wrap: nowrap;
   }
 
   img {
-    max-width: 20vw;
+    max-height: 20vh;
+    max-width: 80%;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
   }
 
   .price-update {
-    // display: flex;
-    margin-bottom: 1ch;
+    width: fit-content;
+    text-align: center;
   }
+
   .update-quantity {
-    width: 8ch;
+    width: 30%;
   }
 `;
 export { StyledCartCard, CartCard };
