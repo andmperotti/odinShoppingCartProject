@@ -30,7 +30,18 @@ function CartCard({ className, cartItem, products, cartItems, setCartItems }) {
             {(products[cartItem.id - 1].price * cartItem.quantity).toFixed(2)}
           </b>
         </p>
-        <button type="button" className="delete-button">
+        <button
+          type="button"
+          className="delete-button"
+          onClick={() => {
+            let newCartItems = [...cartItems];
+            let currentProductIndex = newCartItems.findIndex(
+              (item) => item.id === cartItem.id
+            );
+            newCartItems.splice(currentProductIndex, 1);
+            setCartItems(newCartItems);
+          }}
+        >
           Delete
         </button>
       </div>
