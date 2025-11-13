@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router";
 
-function Navbar({ className }) {
+function NavBar({ className }) {
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
@@ -55,7 +55,7 @@ function Navbar({ className }) {
   );
 }
 
-const StyledNavbar = styled(Navbar)`
+const StyledNavBar = styled(NavBar)`
   background: gray;
   display: flex;
   justify-content: space-around;
@@ -106,4 +106,4 @@ const StyledNavbar = styled(Navbar)`
     text-decoration: none;
   }
 `;
-export { StyledNavbar, Navbar };
+export { StyledNavBar, NavBar };
