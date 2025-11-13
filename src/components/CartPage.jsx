@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useOutletContext } from "react-router";
 import { StyledCartCard } from "./CartCard";
+import PropTypes from "prop-types";
 
 //non prop version other than styled-content className prop
 function CartPage({ className }) {
@@ -42,7 +43,11 @@ function CartPage({ className }) {
   }
 }
 
-// value={cartItems[product.id - 1].quantity}
+CartPage.PropTypes = {
+  products: PropTypes.array,
+  cartItems: PropTypes.array,
+  setCartItems: PropTypes.func,
+};
 
 const StyledCartPage = styled(CartPage)`
   h2,

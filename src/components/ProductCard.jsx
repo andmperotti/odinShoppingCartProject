@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 function ProductCard({ className, product, cartItems, setCartItems }) {
   return (
@@ -39,6 +40,12 @@ function ProductCard({ className, product, cartItems, setCartItems }) {
     </div>
   );
 }
+
+ProductCard.PropTypes = {
+  product: PropTypes.object,
+  cartItems: PropTypes.array,
+  setCartItems: PropTypes.func,
+};
 
 const StyledProductCard = styled(ProductCard)`
   border: 1px solid lightgray;

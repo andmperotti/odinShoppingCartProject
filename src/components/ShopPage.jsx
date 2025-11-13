@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useOutletContext } from "react-router";
 import { StyledProductCard } from "./ProductCard";
+import PropTypes from "prop-types";
 
 function ShopPage({ className }) {
   const [products, cartItems, setCartItems] = useOutletContext();
@@ -24,6 +25,12 @@ function ShopPage({ className }) {
     </div>
   );
 }
+
+ShopPage.propTypes = {
+  products: PropTypes.array,
+  cartItems: PropTypes.array,
+  setCartItems: PropTypes.func,
+};
 
 const StyledShopPage = styled(ShopPage)`
   display: flex;

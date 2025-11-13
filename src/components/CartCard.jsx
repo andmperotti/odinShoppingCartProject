@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 function CartCard({ className, cartItem, products, cartItems, setCartItems }) {
   return (
@@ -48,6 +49,13 @@ function CartCard({ className, cartItem, products, cartItems, setCartItems }) {
     </div>
   );
 }
+
+CartCard.PropTypes = {
+  cartItem: PropTypes.object,
+  products: PropTypes.array,
+  cartItems: PropTypes.array,
+  setCartItems: PropTypes.func,
+};
 
 const StyledCartCard = styled(CartCard)`
   margin: 1vh 3vw;
