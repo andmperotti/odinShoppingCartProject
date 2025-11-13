@@ -7,16 +7,20 @@ function ShopPage({ className }) {
   return (
     <div className={className}>
       <h1>Shop</h1>
-      <ul>
-        {products.map((product, index) => (
-          <StyledProductCard
-            product={product}
-            key={index}
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-          />
-        ))}
-      </ul>
+      {products.length > 0 ? (
+        <ul>
+          {products.map((product, index) => (
+            <StyledProductCard
+              product={product}
+              key={index}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+            />
+          ))}
+        </ul>
+      ) : (
+        <p>No products pulled from resource; server error.</p>
+      )}
     </div>
   );
 }
