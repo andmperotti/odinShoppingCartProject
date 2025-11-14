@@ -2,13 +2,13 @@ import { createBrowserRouter } from "react-router";
 import { StyledHomePage } from "../components/HomePage";
 import { StyledCartPage } from "../components/CartPage";
 import { StyledShopPage } from "../components/ShopPage";
-import { StyledNavbar } from "../components/Navbar";
+import { StyledNavBar } from "../components/NavBar";
 
-const router = createBrowserRouter([
+const routes = [
   {
     path: "/",
-    Component: StyledNavbar,
-    errorElement: StyledNavbar,
+    Component: StyledNavBar,
+    errorElement: StyledNavBar,
     children: [
       { index: true, Component: StyledHomePage },
       {
@@ -21,6 +21,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
+const router = createBrowserRouter(routes);
 
-export { router };
+export { router, routes };
