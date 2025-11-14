@@ -15,7 +15,7 @@ function CartPage({ className }) {
   if (cartItems.length > 0) {
     return (
       <div className={className}>
-        <h2>Shopping Cart</h2>
+        <h1>Shopping Cart</h1>
         <ul>
           {cartItems.map((cartItem) => (
             <StyledCartCard
