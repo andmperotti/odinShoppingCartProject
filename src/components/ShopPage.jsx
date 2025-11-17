@@ -7,7 +7,7 @@ function ShopPage({ className }) {
   const [products, cartItems, setCartItems] = useOutletContext();
   return (
     <div className={className}>
-      <h1>Shop</h1>
+      <h1>Products</h1>
       {products.length > 0 ? (
         <ul>
           {products.map((product, index) => (
@@ -20,7 +20,7 @@ function ShopPage({ className }) {
           ))}
         </ul>
       ) : (
-        <p>No products pulled from resource; server error.</p>
+        <p>Loading or no products pulled from resource; server error.</p>
       )}
     </div>
   );
