@@ -36,7 +36,7 @@ function CartPage({ className }) {
   } else {
     return (
       <div className={className}>
-        <h2>Shopping Cart</h2>
+        <h1>Shopping Cart</h1>
         <p>Nothing in cart</p>
       </div>
     );
@@ -50,7 +50,7 @@ CartPage.PropTypes = {
 };
 
 const StyledCartPage = styled(CartPage)`
-  h2,
+  h1,
   p {
     text-align: center;
   }
