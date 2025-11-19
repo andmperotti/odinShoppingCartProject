@@ -1,14 +1,15 @@
 import { createBrowserRouter } from "react-router";
-import { StyledHomePage } from "../components/HomePage";
-import { StyledCartPage } from "../components/CartPage";
-import { StyledShopPage } from "../components/ShopPage";
-import { StyledNavBar } from "../components/NavBar";
+import { HomePage, StyledHomePage } from "../components/HomePage";
+import { CartPage, StyledCartPage } from "../components/CartPage";
+import { ShopPage, StyledShopPage } from "../components/ShopPage";
+import { NavBar, StyledNavBar } from "../components/NavBar";
+import { App, StyledApp } from "../components/App";
 
 const routes = [
   {
     path: "/",
-    Component: StyledNavBar,
-    errorElement: StyledNavBar,
+    Component: StyledApp,
+    errorElement: StyledApp,
     children: [
       { index: true, Component: StyledHomePage },
       {
