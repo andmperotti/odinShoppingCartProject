@@ -1,22 +1,9 @@
 import styled from "styled-components";
-import { Link } from "react-router";
-import { useEffect, useState } from "react";
-import { Outlet } from "react-router";
+import { Link } from "react-router-dom";
 
-function NavBar({ className }) {
-  const [products, setProducts] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts([...data]);
-      });
-  }, []);
-
+function NavBar({ className, cartItems }) {
   return (
-    <div>
+    <div data-testid="NavBar">
       <nav className={className}>
         <Link to="/">
           <h2>Home</h2>
@@ -35,7 +22,7 @@ function NavBar({ className }) {
         <Link to="/cart">
           <h2>Cart</h2>
           {cartItems && (
-            <span className="cart-count">
+            <span className="cart-count" data-testid="cartCount">
               {cartItems
                 .filter((item) => item.quantity > 0)
                 .reduce(
@@ -50,7 +37,6 @@ function NavBar({ className }) {
           </svg>
         </Link>
       </nav>
-      <Outlet context={[products, cartItems, setCartItems]} />
     </div>
   );
 }

@@ -14,7 +14,7 @@ function CartPage({ className }) {
 
   if (cartItems.length > 0) {
     return (
-      <div className={className}>
+      <div className={className} data-testid="CartPage">
         <h1>Shopping Cart</h1>
         <ul>
           {cartItems.map((cartItem) => (
@@ -35,7 +35,7 @@ function CartPage({ className }) {
     );
   } else {
     return (
-      <div className={className}>
+      <div className={className} data-testid="CartPage">
         <h1>Shopping Cart</h1>
         <p>Nothing in cart</p>
       </div>

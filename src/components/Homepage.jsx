@@ -3,7 +3,7 @@ import MysteryImage from "../assets/MysteryDeal.png";
 
 function HomePage({ className }) {
   return (
-    <div className={className}>
+    <div className={className} data-testid="HomePage">
       <h1>Random Store</h1>
       <img src={MysteryImage} alt="mystery box" />
     </div>

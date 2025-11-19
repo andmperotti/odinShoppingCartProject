@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function CartCard({ className, cartItem, products, cartItems, setCartItems }) {
   return (
-    <div className={className} key={cartItem.id}>
+    <div className={className} key={cartItem.id} data-testid="CartCard">
       <img src={products[cartItem.id - 1].image} alt="#"></img>
       <h2>{products[cartItem.id - 1].title}</h2>
       <div className="details">

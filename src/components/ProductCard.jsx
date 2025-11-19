@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function ProductCard({ className, product, cartItems, setCartItems }) {
   return (
-    <div className={className}>
+    <div className={className} data-testid="ProductCard">
       <h2>{product.title}</h2>
       <img src={product.image} alt={product.title} />
       <span>

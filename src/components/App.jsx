@@ -1,11 +1,24 @@
 import styled from "styled-components";
-import { RouterProvider } from "react-router";
-import { router } from "../assets/router";
+import { NavBar, StyledNavBar } from "./NavBar";
+import { useEffect, useState } from "react";
+import { Outlet } from "react-router";
 
 function App() {
+  const [products, setProducts] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts([...data]);
+      });
+  }, []);
+
   return (
     <div>
-      <RouterProvider router={router} />
+      <StyledNavBar cartItems={cartItems} />
+      <Outlet context={[products, cartItems, setCartItems]} />
     </div>
   );
 }
