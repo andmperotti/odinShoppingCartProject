@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NavBar, StyledNavBar } from "./NavBar";
 import { useEffect, useState } from "react";
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div data-testid="app">
       <StyledNavBar cartItems={cartItems} />
       <Outlet context={[products, cartItems, setCartItems]} />
     </div>
