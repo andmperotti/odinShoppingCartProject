@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useOutletContext } from "react-router";
+import { useOutletContext } from "react-router-dom";
 import { StyledCartCard } from "./CartCard";
 import PropTypes from "prop-types";
 
@@ -28,7 +28,9 @@ function CartPage({ className }) {
           ))}
         </ul>
         <div className="total-cost">
-          <p>Total Cart Price: {totalCartPrice.toFixed(2)}</p>
+          <p className="cart-price">
+            Total Cart Price: {totalCartPrice.toFixed(2)}
+          </p>
           <button type="button">Checkout</button>
         </div>
       </div>
@@ -59,6 +61,9 @@ const StyledCartPage = styled(CartPage)`
     flex-direction: column;
     align-items: flex-end;
     margin-right: 3vw;
+  }
+  .cart-price {
+    font-weight: bold;
   }
 `;
 export { CartPage, StyledCartPage };
