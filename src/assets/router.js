@@ -2,22 +2,20 @@ import { createBrowserRouter } from "react-router";
 import { HomePage, StyledHomePage } from "../components/HomePage";
 import { CartPage, StyledCartPage } from "../components/CartPage";
 import { ShopPage, StyledShopPage } from "../components/ShopPage";
-import { NavBar, StyledNavBar } from "../components/NavBar";
 import { App, StyledApp } from "../components/App";
 
 const routes = [
   {
     path: "/",
     Component: StyledApp,
-    errorElement: StyledApp,
     children: [
       { index: true, Component: StyledHomePage },
       {
-        path: "/shop",
+        path: "shop",
         Component: StyledShopPage,
       },
       {
-        path: "/cart",
+        path: "cart",
         Component: StyledCartPage,
       },
     ],
