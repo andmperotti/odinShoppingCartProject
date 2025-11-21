@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 function NavBar({ className, cartItems }) {
   return (
-    <div data-testid="NavBar">
-      <nav className={className}>
+    <div data-testid="NavBar" className={className}>
+      <nav>
         <Link to="/">
           <h2>Home</h2>
           <svg className="feather">
@@ -43,12 +43,16 @@ function NavBar({ className, cartItems }) {
 
 const StyledNavBar = styled(NavBar)`
   background: gray;
-  display: flex;
-  justify-content: space-around;
   position: sticky;
   top: 0px;
   left: 0px;
   right: 0px;
+
+  nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
 
   //svg file
   .feather {
