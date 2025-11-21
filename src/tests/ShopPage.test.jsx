@@ -1,12 +1,20 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import * as React from "react";
-import { ShopPage } from "../components/ShopPage.jsx";
+import { RouterProvider, createMemoryRouter } from "react-router-dom";
+import { routes } from "../assets/router";
+import { StyledHomePage } from "../components/HomePage";
+import { StyledNavBar } from "../components/NavBar";
+import { StyledShopPage } from "../components/ShopPage";
 
-describe("ShopPage component", () => {
-  it("ShopPage renders, with content of 'Shop'", () => {
-    render(<ShopPage />);
-    screen.debug();
-    expect(screen.getByText("Shop")).toBeInTheDocument();
+describe("NavBar Component", () => {
+  it("renders NavBar by checking for the testid present", () => {
+    const memoryRouter = createMemoryRouter(routes, {
+      initialEntries: ["/shop"],
+    });
+
+    render(<RouterProvider router={memoryRouter} />);
+
+    expect(screen.getByTestId("ShopPage")).toBeInTheDocument();
   });
 });
