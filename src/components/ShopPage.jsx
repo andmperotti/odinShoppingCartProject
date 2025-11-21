@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useOutletContext } from "react-router";
+import { useOutletContext } from "react-router-dom";
 import { StyledProductCard } from "./ProductCard";
 import PropTypes from "prop-types";
 
