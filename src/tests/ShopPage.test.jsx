@@ -8,7 +8,7 @@ import { StyledNavBar } from "../components/NavBar";
 import { StyledShopPage } from "../components/ShopPage";
 
 describe("NavBar Component", () => {
-  it("renders NavBar by checking for the testid present", () => {
+  it("renders ShopPage by checking for the testid present", () => {
     const memoryRouter = createMemoryRouter(routes, {
       initialEntries: ["/shop"],
     });
