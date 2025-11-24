@@ -6,6 +6,8 @@ import { routes } from "../assets/router";
 import { StyledHomePage } from "../components/HomePage";
 import { StyledNavBar } from "../components/NavBar";
 import { StyledShopPage } from "../components/ShopPage";
+import { waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 describe("NavBar Component", () => {
   it("renders NavBar by checking for the testid present", () => {
@@ -21,5 +23,43 @@ describe("NavBar Component", () => {
 
     render(<RouterProvider router={memoryRouter} />);
     expect(screen.getByText("0")).toBeInTheDocument();
+  });
+
+  it("Changes the value of the cartCounter after a user adds a product to their cart", async () => {
+    // eslint-disable-next-line no-undef
+    global.fetch = vi.fn();
+
+    fetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => [
+        {
+          id: 1,
+          title: "Drevvska title badge shirt",
+          price: 50,
+          description:
+            "poe friends had a custom shirt made showing off the wide variety of supporter packs I've boughten from GGG to support the development of POE",
+          image: "#",
+          rating: { rate: 5, count: 1 },
+        },
+      ],
+    });
+    const memoryRouter = createMemoryRouter(routes, {
+      initialEntries: ["/shop"],
+    });
+
+    render(<RouterProvider router={memoryRouter} />);
+    await waitFor(() =>
+      expect(screen.getByText(/Drevvska/i)).toBeInTheDocument()
+    );
+    screen.debug();
+    const productCard = document.querySelector(".order-quantity-input");
+    await userEvent.click(productCard);
+    await userEvent.keyboard("{5}");
+    await userEvent.keyboard("{/5}");
+    await userEvent.click(document.querySelector("button"));
+
+    await waitFor(() => expect(screen.getByText("5")).toBeInTheDocument());
+
+    screen.debug();
   });
 });
