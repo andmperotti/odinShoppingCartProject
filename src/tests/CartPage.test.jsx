@@ -16,9 +16,14 @@ describe("CartPage component", () => {
     expect(screen.getByTestId("CartPage")).toBeInTheDocument();
   });
 
-  // it("CartPage communicates to users that they have no products in their cart", () => {
-  //   render(<CartPage cartItems={[{ id: 1, quantity: 1 }]} />);
-  // });
+  it("CartPage communicates to users that they have no products in their cart", () => {
+    const memoryRouter = createMemoryRouter(routes, {
+      initialEntries: ["/cart"],
+    });
+    render(<RouterProvider router={memoryRouter} />);
+    screen.debug();
+    expect(screen.getByText(/nothing in cart/i)).toBeInTheDocument();
+  });
 });
 
-//mock cartItems, and check if a CartCard will be rendered when items in cart, and check if 'Nothing in cart' is rendered when the cartItems is empty/bad fetch.
+//mock products, simulate user adding product to cart, test whether product is in cart
