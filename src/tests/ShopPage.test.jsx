@@ -19,7 +19,7 @@ describe("NavBar Component", () => {
     expect(screen.getByTestId("ShopPage")).toBeInTheDocument();
   });
 
-  it("App renders ShopPage when users navigate to url ending in '/shop' by checking for its testid", async () => {
+  it("ShopPage renders a ProductCard instance when 'products' has an element/product object", async () => {
     // eslint-disable-next-line no-undef
     global.fetch = vi.fn();
 
@@ -46,6 +46,40 @@ describe("NavBar Component", () => {
     await waitFor(() =>
       expect(screen.getByTestId("ProductCard")).toBeInTheDocument()
     );
+    screen.debug();
+  });
+
+  it("ShopPage renders a 'loading' statement while fetch is in progress", async () => {
+    // eslint-disable-next-line no-undef
+    global.fetch = vi.fn();
+
+    const memoryRouter = createMemoryRouter(routes, {
+      initialEntries: ["/shop"],
+    });
+
+    render(<RouterProvider router={memoryRouter} />);
+
+    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+
+    screen.debug();
+  });
+
+  it("ShopPage renders a 'server error' statement when the fetch results in an error", async () => {
+    // eslint-disable-next-line no-undef
+    global.fetch = vi.fn();
+
+    fetch.mockResolvedValueOnce({
+      ok: false,
+    });
+    const memoryRouter = createMemoryRouter(routes, {
+      initialEntries: ["/shop"],
+    });
+
+    render(<RouterProvider router={memoryRouter} />);
+    await waitFor(() =>
+      expect(screen.getByText(/Error obtaining products/i)).toBeInTheDocument()
+    );
+
     screen.debug();
   });
 });
