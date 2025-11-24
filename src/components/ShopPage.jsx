@@ -4,11 +4,13 @@ import { StyledProductCard } from "./ProductCard";
 import PropTypes from "prop-types";
 
 function ShopPage({ className }) {
-  const [products, cartItems, setCartItems] = useOutletContext();
+  const [products, cartItems, setCartItems, loading, error] =
+    useOutletContext();
   return (
     <div className={className} data-testid="ShopPage">
       <h1>Products</h1>
-      {products.length > 0 ? (
+      {loading === true && <p>Loading products from resources...</p>}
+      {products.length > 0 && (
         <ul>
           {products.map((product, index) => (
             <StyledProductCard
@@ -19,9 +21,8 @@ function ShopPage({ className }) {
             />
           ))}
         </ul>
-      ) : (
-        <p>Loading or no products pulled from resource; server error.</p>
       )}
+      {products.length < 1 && error && <p>Error obtaining products</p>}
     </div>
   );
 }
