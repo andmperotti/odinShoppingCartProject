@@ -15,4 +15,11 @@ describe("NavBar Component", () => {
 
     expect(screen.getByTestId("NavBar")).toBeInTheDocument();
   });
+
+  it("renders NavBar component with a counter above the cart image and link which starts with a value of zero", () => {
+    const memoryRouter = createMemoryRouter(routes);
+
+    render(<RouterProvider router={memoryRouter} />);
+    expect(screen.getByText("0")).toBeInTheDocument();
+  });
 });
