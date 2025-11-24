@@ -56,11 +56,18 @@ const StyledProductCard = styled(ProductCard)`
   align-items: center;
   flex-direction: column;
 
-  .product-price {
+  span {
     font-weight: bold;
   }
   .order-quantity-input {
     width: 10ch;
+  }
+
+  img {
+    height: 25vh;
+  }
+  p {
+    text-align: center;
   }
 `;
 export { ProductCard, StyledProductCard };
