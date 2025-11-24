@@ -10,11 +10,21 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts([...data]);
-      });
+    const fetchProductData = async () => {
+      try {
+        const response = await fetch("https://fakestoreapi.com/products");
+        if (!response.ok) {
+          throw new Error("Failed to fetch products");
+        }
+        const products = await response.json();
+        setProducts(products);
+      } catch {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProductData();
   }, []);
 
   return (
