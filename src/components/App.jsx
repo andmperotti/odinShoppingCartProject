@@ -18,7 +18,7 @@ function App() {
         }
         const products = await response.json();
         setProducts(products);
-      } catch {
+      } catch (error) {
         setError(error.message);
       } finally {
         setLoading(false);
