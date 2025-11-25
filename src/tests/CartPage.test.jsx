@@ -110,4 +110,53 @@ describe("CartPage component", () => {
     screen.debug();
     expect(screen.getByText(/Nothing in cart/i)).toBeInTheDocument();
   });
+
+  it("CartPage total quantity updates correctly after updating a single product quantity input elements value", async () => {
+    // eslint-disable-next-line no-undef
+    global.fetch = vi.fn();
+
+    fetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => [
+        {
+          id: 1,
+          title: "Drevvska title badge shirt",
+          price: 50,
+          description:
+            "poe friends had a custom shirt made showing off the wide variety of supporter packs I've boughten from GGG to support the development of POE",
+          image: "#",
+          rating: { rate: 5, count: 1 },
+        },
+      ],
+    });
+    const memoryRouter = createMemoryRouter(routes, {
+      initialEntries: ["/shop"],
+    });
+
+    render(<RouterProvider router={memoryRouter} />);
+
+    await waitFor(() =>
+      expect(screen.getByText(/Drevvska/i)).toBeInTheDocument()
+    );
+    const productCard = document.querySelector(".order-quantity-input");
+    await userEvent.click(productCard);
+    await userEvent.keyboard("{3}");
+    await userEvent.keyboard("{/3}");
+    await userEvent.click(document.querySelector("button"));
+    const cartPageLink = document.querySelector("nav a[href*='cart']");
+    await userEvent.click(cartPageLink);
+    //update quantity
+    await userEvent.click(document.querySelector(".update-quantity"));
+    await userEvent.keyboard("{Backspace}");
+    await userEvent.keyboard("{/Backspace}");
+
+    await userEvent.keyboard("{2}");
+    await userEvent.keyboard("{/2}");
+
+    screen.debug();
+    //check for the value shown to be === 2
+    expect(
+      screen.getByTestId("totalQuantity").textContent.split(" ")
+    ).toContain("2");
+  });
 });
