@@ -31,7 +31,7 @@ function CartPage({ className }) {
             />
           ))}
         </ul>
-        <div className="total-quantity">
+        <div className="total-quantity" data-testid="totalQuantity">
           <p>Total quantity: {totalCartQuantity}</p>
         </div>
         <div className="total-cost">
