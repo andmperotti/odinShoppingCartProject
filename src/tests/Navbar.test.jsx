@@ -62,4 +62,19 @@ describe("NavBar Component", () => {
 
     screen.debug();
   });
+
+  it("navbar navigation links  send user to correct component", async () => {
+    const memoryRouter = createMemoryRouter(routes, {
+      initialEntries: ["/"],
+    });
+    render(<RouterProvider router={memoryRouter} />);
+    expect(screen.getByTestId("HomePage")).toBeInTheDocument();
+    await userEvent.click(document.querySelector("a"));
+    expect(screen.getByTestId("HomePage")).toBeInTheDocument();
+    await userEvent.click(document.querySelector("nav a[href*='shop']"));
+    expect(screen.getByTestId("ShopPage")).toBeInTheDocument();
+    await userEvent.click(document.querySelector("nav a[href*='cart']"));
+    expect(screen.getByTestId("CartPage")).toBeInTheDocument();
+    screen.debug();
+  });
 });
