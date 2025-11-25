@@ -12,7 +12,7 @@ function CartPage({ className }) {
     0
   );
   let totalCartQuantity = cartItems.reduce(
-    (total, eachProduct) => total + eachProduct.quantity,
+    (total, eachProduct) => total + +eachProduct.quantity,
     0
   );
 
