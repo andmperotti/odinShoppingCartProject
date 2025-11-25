@@ -11,6 +11,10 @@ function CartPage({ className }) {
       total + products[eachProduct.id - 1].price * eachProduct.quantity,
     0
   );
+  let totalCartQuantity = cartItems.reduce(
+    (total, eachProduct) => total + eachProduct.quantity,
+    0
+  );
 
   if (cartItems.length > 0) {
     return (
@@ -27,6 +31,9 @@ function CartPage({ className }) {
             />
           ))}
         </ul>
+        <div className="total-quantity">
+          <p>Total quantity: {totalCartQuantity}</p>
+        </div>
         <div className="total-cost">
           <p className="cart-price">
             Total Cart Price: {totalCartPrice.toFixed(2)}
@@ -56,7 +63,8 @@ const StyledCartPage = styled(CartPage)`
   p {
     text-align: center;
   }
-  .total-cost {
+  .total-cost,
+  .total-quantity {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
