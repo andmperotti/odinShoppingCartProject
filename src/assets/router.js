@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
-import { HomePage, StyledHomePage } from "../components/HomePage.jsx";
-import { CartPage, StyledCartPage } from "../components/CartPage.jsx";
-import { ShopPage, StyledShopPage } from "../components/ShopPage.jsx";
+import { HomePage, StyledHomePage } from "../components/Homepage.jsx";
+import { CartPage, StyledCartPage } from "../components/Cartpage.jsx";
+import { ShopPage, StyledShopPage } from "../components/Shoppage.jsx";
 import { App, StyledApp } from "../components/App.jsx";
 
 const routes = [
