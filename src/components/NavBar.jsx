@@ -8,14 +8,14 @@ function NavBar({ className, cartItems }) {
         <Link to="/">
           <h2>Home</h2>
           <svg className="feather">
-            <use href="node_modules/feather-icons/dist/feather-sprite.svg#home" />
+            <use href="../node_modules/feather-icons/dist/feather-sprite.svg#home" />
           </svg>
         </Link>
 
         <Link to="/shop">
           <h2>Shop</h2>
           <svg className="feather">
-            <use href="node_modules/feather-icons/dist/feather-sprite.svg#shopping-bag" />
+            <use href="../node_modules/feather-icons/dist/feather-sprite.svg#shopping-bag" />
           </svg>
         </Link>
 
@@ -33,7 +33,7 @@ function NavBar({ className, cartItems }) {
             </span>
           )}
           <svg className="feather cart-feather">
-            <use href="node_modules/feather-icons/dist/feather-sprite.svg#shopping-cart" />
+            <use href="../node_modules/feather-icons/dist/feather-sprite.svg#shopping-cart" />
           </svg>
         </Link>
       </nav>
