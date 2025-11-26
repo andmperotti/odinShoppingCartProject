@@ -3,7 +3,7 @@ import { describe, it, expect } from "vitest";
 import * as React from "react";
 import { CartPage } from "../components/CartPage.jsx";
 import { createMemoryRouter } from "react-router-dom";
-import { routes } from "../assets/router.js";
+import { routes } from "../router.js";
 import { RouterProvider } from "react-router-dom";
 import { vi } from "vitest";
 import { waitFor } from "@testing-library/react";

@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import * as React from "react";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
-import { routes } from "../assets/router";
+import { routes } from "../router";
 import { StyledHomePage } from "../components/HomePage";
 import { StyledNavBar } from "../components/NavBar";
 import { StyledShopPage } from "../components/ShopPage";

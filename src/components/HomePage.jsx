@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import MysteryImage from "../assets/MysteryDeal.png";
+import MysteryImage from "../../public/MysteryDeal.png";
 
 function HomePage({ className }) {
   return (
